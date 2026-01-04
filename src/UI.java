@@ -9,6 +9,19 @@ public class UI {
         return userInput;
     }
 
+    public String userNameStringInput() {
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            String userInput = scanner.nextLine();
+            for (Tamagotchi tamagotchi : TamagotchiCenter.tamagotchis) {
+                if (tamagotchi.getName().equalsIgnoreCase(userInput)) {
+                    return userInput;
+                }
+            }
+            System.out.println("Invalid name, try again.");
+        }
+    }
+
     public boolean userBooleanInput() {
         String userInput;
         while (true) {
@@ -30,6 +43,19 @@ public class UI {
             Scanner scanner = new Scanner(System.in);
             userInput = stringToInt(scanner.nextLine());
             if (userInput < 0) {
+                System.out.println("Invalid number, please try again.");
+            } else {
+                return userInput;
+            }
+        }
+    }
+
+    public int userActIntInput() {
+        int userInput;
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            userInput = stringToInt(scanner.nextLine());
+            if (userInput < 0 || userInput > 4) {
                 System.out.println("Invalid number, please try again.");
             } else {
                 return userInput;

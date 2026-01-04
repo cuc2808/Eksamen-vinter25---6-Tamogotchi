@@ -26,23 +26,23 @@ public class Tamagotchi {
 
     public void tamaSleep(int hoursSlept) {
         setEnergy((energy += (30 * hoursSlept)));
-        setHunger((hunger += (-20 * hoursSlept)));
+        setHunger((hunger += (20 * hoursSlept)));
     }
 
     public void tamaFeed(int portions) {
         setEnergy((energy += (5 * portions)));
-        setHunger((hunger += (25 * portions)));
+        setHunger((hunger += (-25 * portions)));
         setHappiness((happiness += (10 * portions)));
     }
 
     public void tamaPlay(int hoursPlayed) {
-        setHunger((hunger += (-10 * hoursPlayed)));
+        setHunger((hunger += (10 * hoursPlayed)));
         setEnergy((energy += (-10 * hoursPlayed)));
         setHappiness((happiness += (30 * hoursPlayed)));
     }
 
     public void tamaWork(int hoursWorked) {
-        setHunger((hunger += (-5 * hoursWorked)));
+        setHunger((hunger += (5 * hoursWorked)));
         setEnergy((energy += (-5 * hoursWorked)));
         setHappiness((happiness += (-10 * hoursWorked)));
         setCoins((coins += (50 * hoursWorked)));
@@ -79,6 +79,8 @@ public class Tamagotchi {
     public void setEnergy(int energy) {
         if (energy > 100) {
             energy = 100;
+        } else if (energy < 0) {
+            energy = 0;
         }
         this.energy = energy;
     }

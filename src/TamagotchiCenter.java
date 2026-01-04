@@ -3,7 +3,7 @@ import java.util.LinkedHashMap;
 
 public class TamagotchiCenter {
 
-    ArrayList<Tamagotchi> tamagotchis = new ArrayList<>();
+    public static ArrayList<Tamagotchi> tamagotchis = new ArrayList<>();
 
     public void addPet(String tamaName) {
         Tamagotchi tamagotchi = new Tamagotchi(tamaName);
@@ -38,8 +38,8 @@ public class TamagotchiCenter {
             System.out.println("-Happiness " + tamagotchi.getHappiness());
             System.out.println("-Energy " + tamagotchi.getEnergy());
             System.out.println("-Hunger " + tamagotchi.getHunger());
-            System.out.println("-Coins\n " + tamagotchi.getCoins());
-            System.out.println("----------------------------\n");
+            System.out.println("-Coins " + tamagotchi.getCoins());
+            System.out.println("\n----------------------------\n");
         }
     }
 
@@ -57,7 +57,7 @@ public class TamagotchiCenter {
 
     public LinkedHashMap <Tamagotchi, Integer> getMostHungryPet() {
         LinkedHashMap <Tamagotchi, Integer> mostHungryList = new LinkedHashMap<>();
-        for(int i = 200; i >= 0; i--) {
+        for(int i = 200; i >= -300; i--) {
             for (Tamagotchi tamagotchi : tamagotchis) {
                 if (tamagotchi.getHunger() == i) {
                     mostHungryList.put(tamagotchi,tamagotchi.getHunger());
