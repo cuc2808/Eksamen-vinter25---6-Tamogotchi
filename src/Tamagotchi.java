@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Tamagotchi {
 
     public String name;
@@ -8,30 +6,42 @@ public class Tamagotchi {
     public int happiness = 70;
     public int coins = 0;
 
+    public Tamagotchi(String name) {
+        this.name = name;
+    }
 
-    public void performActivity() {
-
+    public void performActivity(String activity, int hoursDoingIt) {
+        switch (activity) {
+            case "sleep": tamaSleep(hoursDoingIt);
+            break;
+            case "feed": tamaFeed(hoursDoingIt);
+            break;
+            case "play": tamaPlay(hoursDoingIt);
+            break;
+            case "work": tamaWork(hoursDoingIt);
+            break;
+        }
     }
 
 
-    public void tamoSleep(int hoursSlept) {
+    public void tamaSleep(int hoursSlept) {
         setEnergy((energy += (30 * hoursSlept)));
         setHunger((hunger += (-20 * hoursSlept)));
     }
 
-    public void tamoFeed(int portions) {
+    public void tamaFeed(int portions) {
         setEnergy((energy += (5 * portions)));
         setHunger((hunger += (25 * portions)));
         setHappiness((happiness += (10 * portions)));
     }
 
-    public void tamoPlay(int hoursPlayed) {
+    public void tamaPlay(int hoursPlayed) {
         setHunger((hunger += (-10 * hoursPlayed)));
         setEnergy((energy += (-10 * hoursPlayed)));
         setHappiness((happiness += (30 * hoursPlayed)));
     }
 
-    public void tamoWork(int hoursWorked) {
+    public void tamaWork(int hoursWorked) {
         setHunger((hunger += (-5 * hoursWorked)));
         setEnergy((energy += (-5 * hoursWorked)));
         setHappiness((happiness += (-10 * hoursWorked)));
@@ -54,9 +64,11 @@ public class Tamagotchi {
     }
 
     public void setHunger(int hunger) {
-        if (hunger > 300) {
-            hunger = 300;
-        } else if (hunger < -300)
+        if (hunger > 200) {
+            hunger = 200;
+        } else if (hunger < -300) {
+            hunger = -300;
+        }
         this.hunger = hunger;
     }
 
@@ -78,6 +90,8 @@ public class Tamagotchi {
     public void setHappiness(int happiness) {
         if (happiness > 100) {
             happiness = 100;
+        } else if (happiness < 0) {
+            happiness = 0;
         }
         this.happiness = happiness;
     }
