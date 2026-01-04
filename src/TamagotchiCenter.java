@@ -30,6 +30,9 @@ public class TamagotchiCenter {
 
     public void printStatusReport() {
         System.out.println("=== Status on Tamagotchis ===\n");
+        if (tamagotchis.isEmpty()) {
+            System.out.println("There is no tamagotchi!...");
+        }
         for (Tamagotchi tamagotchi : tamagotchis) {
             System.out.println("Name: " + tamagotchi.getName());
             System.out.println("-Happiness " + tamagotchi.getHappiness());
